@@ -10,7 +10,32 @@ ERROR CASES: Return '\0' for invalid inputs.
 
 NOTES: Don't create new string.
 */
-
+#include<stdio.h>
+#include<stdlib.h>
+void rearrange(int,char*);
 char removeSpaces(char *str) {
-	return '\0';
+	int i=0;
+	if (str == NULL)
+		return '\0';
+
+	while (*(str + i) != '\0')
+	{
+		if (*(str + i) == ' ')
+		{
+			rearrange(i, str);
+		}
+		else
+		i++;
+	}
+	
+}
+
+void rearrange(int l, char* str)
+{
+	int i;
+	for (i = l; *(str+i)!='\0'; i++)
+	{
+		str[i] = str[i + 1];
+	}
+
 }

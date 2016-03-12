@@ -22,10 +22,23 @@ int main(){
 	//TestNumbertoStr
 
 	//removeSpaces
+	/*char str[] = "12 w 2e     we  2 3     ";
+	char a=removeSpaces(str);
+	printf(" there is  :  %s", str);
 
 	//StrWordsinRev
+	char input[10] = "a b c d";
+	str_words_in_rev(input, 7);
+	printf("here is : %s", input); */
 
 	//commonWords
+	//char *str1 = " ";
+	//char *str2 = " who ";
+	char **p = commonWords(NULL,NULL);
+	
+		printf("I am:  %s", *(p+0));
+
+
 
 
 	return 0;

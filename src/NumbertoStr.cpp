@@ -19,7 +19,55 @@ NOTES: Don't create new string.
 
 #include <stdio.h>
 
+void reverse(char*, int);
+int convert_to_string(int, char*);
 
-void number_to_str(float number, char *str,int afterdecimal){
-	
+void number_to_str(float number, char *str, int afterdecimal){
+	int intnum, i = 0, len;
+	float dec;
+
+	if (number < 0.0)
+	{
+		*str = '-';
+		str++;
+		number = number - (2 * number);
+	}
+
+	intnum = (int)number;
+	dec = number - (float)intnum;
+
+	for (i = 0; i < afterdecimal; i++)
+		dec = dec * 10;
+
+
+	len = convert_to_string(intnum, str);
+	*(str + len) = '.';
+	len = convert_to_string((int)dec, str + len + 1);
+
+}
+
+int convert_to_string(int intnum, char* str)
+{
+	int i = 0;
+	while (intnum != 0)
+	{
+		*(str + i) = (intnum % 10) + '0';
+		intnum = intnum / 10;
+		i++;
+	}
+	reverse(str, i);
+	*(str + i) = '\0';
+
+	return i;
+}
+void reverse(char* str, int l)
+{
+	int i;
+	char temp;
+	for (i = 0; i < l / 2; i++)
+	{
+		temp = *(str + i);
+		*(str + i) = *(str + l - 1 - i);
+		*(str + l - 1 - i) = temp;
+	}
 }
